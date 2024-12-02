@@ -16,12 +16,13 @@
 <body>
   <div class="ui attached segment" id="masthead_segment">
     <div class="ui container">
-      <div class="ui large inverted header">Hello Patrick Marco Bauer, let's take a look at your financial summary.</div>
+      <div class="ui large inverted header">Hello Patrick Marco Bauer, let's take a look at your financial summary.
+      </div>
       <div class="ui stackable grid">
         <div class="centered row">
           <div class="sixteen wide column">
             <div class="ui small link horizontal padded cards">
-              <a href="#" class="card">
+              <a href="#" class="card secsettlink">
                 <div class="content">
                   <div class="ui left floated mini header">
                     Hillcrest Preferred Personal Checking
@@ -63,12 +64,12 @@
           <div class="sixteen wide column">
             <div class="push-20"></div>
             <div class="ui spaced wrapping buttons">
-              <a href="#" class="ui secondary button"><i class="exchange alternate icon"></i> Schedule a transfer</a>
-              <a href="#" class="ui secondary button"><i class="download icon"></i> Make a deposit</a>
-              <a href="#" class="ui secondary button"><i class="file invoice icon"></i> Pay a bill</a>
-              <a href="#" class="ui secondary button"><i class="user tie icon"></i> Pay a person</a>
-              <a href="#" class="ui secondary button"><i class="at icon"></i> Message us</a>
-              <a href="#" class="ui secondary button"><i class="sign out alternate icon"></i> Sign Out</a>
+              <a href="#" class="ui secondary button secsettlink"><i class="exchange alternate icon"></i> Schedule a transfer</a>
+              <a href="#" class="ui secondary button secsettlink"><i class="download icon"></i> Make a deposit</a>
+              <a href="#" class="ui secondary button secsettlink"><i class="file invoice icon"></i> Pay a bill</a>
+              <a href="#" class="ui secondary button secsettlink"><i class="user tie icon"></i> Pay a person</a>
+              <a href="#" class="ui secondary button secsettlink"><i class="at icon"></i> Message us</a>
+              <a href="index.html" class="ui secondary button"><i class="sign out alternate icon"></i> Sign Out</a>
             </div>
           </div>
 
@@ -321,13 +322,16 @@
               <ul class="ui red list">
                 <li><a href="#" id="pinfolink"><span class="ui underline_on_hover red text">Personal
                       Information</span></a></li>
-                <li><a href="#" id="secsettlink"><span class="ui underline_on_hover red text">Security
+                <li><a href="#" class="secsettlink"><span class="ui underline_on_hover red text">Security
                       Settings</span></a></li>
-                <li><a href="#" id="benflink"><span class="ui underline_on_hover red text">Add a Beneficiary to your
+                <li><a href="#" class="secsettlink"><span class="ui underline_on_hover red text">Add a Beneficiary to
+                      your
                       Accounts</span></a></li>
-                <li><a href="#"><span class="ui underline_on_hover red text">Add an External Bank Account</span></a>
+                <li><a href="#" class="secsettlink"><span class="ui underline_on_hover red text">Add an External Bank
+                      Account</span></a>
                 </li>
-                <li><a href="#"><span class="ui underline_on_hover red text">Schedule a Payment</span></a></li>
+                <li><a href="#" class="secsettlink"><span class="ui underline_on_hover red text">Schedule a
+                      Payment</span></a></li>
               </ul>
             </div>
             <div class="ui segment">
@@ -532,18 +536,18 @@
       <div class="ui small red header">
         PERSONAL INFORMATION
       </div>
-      <p>Laura Lacce</p>
+      <p>Patrick Marco Bauer</p>
     </div>
     <div class="ui attached basic padded segment">
       <div class="ui small red header">
         CONTACT INFORMATION
       </div>
       <address>
-        7584 Herbert Malcolm Avenue <br>
-        Tacoma,WA,55478.
+        Bleicherweg 8 <br>
+        8001 Zurich Switzerland.
       </address>
-      <p>adamsoshiommole@yahoo.com</p>
-      <p>(608) 301-5645</p>
+      <p>Patrickmarco1515@gmail.com</p>
+      <p>+41431234568</p>
       <a href="#" class="ui tiny secondary button">UPDATE YOUR CONTACT INFORMATION</a>
     </div>
     <div class="ui attached basic padded segment">
@@ -553,13 +557,13 @@
       <div class="ui middle aligned divided list">
         <div class="item">
           <div class="right floated content">
-            <div class="ui red button">
-              DELETE BENEFICIARY <i class="red close icon"></i>
+            <div class="ui secondary button">
+              ADD BENEFICIARY <i class="green plus icon"></i>
             </div>
           </div>
           <img src="img/avatar.png" alt="beneficiary" class="ui avatar image">
           <div class="content">
-            John Krasinski
+            Add Beneficiary
           </div>
         </div>
       </div>
@@ -589,12 +593,9 @@
     </div>
   </div>
 
-  <!-- ADDING BENEFICIARY MODAL -->
-  <div class="ui coupled modal" id="benfmodal">
-    <div class="header">Your Payment of 400 Euro to 557355******7068 was succesful. Please wait 2 - 3 business days for
-      your payment to be received.</div>
-    <i class="centered massive green calendar check icon"></i>
-    <!-- <div class="ui basic segment">
+
+  <!-- <div class="ui coupled modal" id="benfmodal">
+    <div class="ui basic segment">
       <div class="ui stackable grid">
         <div class="row">
           <div class="sixteen wide column">
@@ -651,10 +652,10 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
 
-  <!-- COLLECTING DL MODAL -->
+
   <div class="ui coupled modal" id="dlmodal">
     <div class="header">
       <span class="ui small text">Could we kindly request you to verify your identity? Your security is our utmost
@@ -702,7 +703,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>

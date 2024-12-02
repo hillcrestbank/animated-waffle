@@ -6,7 +6,7 @@ $(".ui.calendar").calendar();
 
 $("#pinfomodal").modal("attach events", "#pinfolink", "show");
 
-$("#secsettmodal").modal("attach events", "#secsettlink", "show");
+$("#secsettmodal").modal("attach events", ".secsettlink", "show");
 
 $(".coupled.modal").modal({
   allowMultiple: false,
