@@ -29,19 +29,7 @@
                     <div class="sub header">X5942</div>
                   </div>
                   <div class="ui right floated header">
-                    $3,780,947.48
-                    <div class="right aligned sub header">Available</div>
-                  </div>
-                </div>
-              </a>
-              <!-- <a href="#" class="card">
-                <div class="content">
-                  <div class="ui left floated mini header">
-                    Hillcrest Savings Account
-                    <div class="sub header">X5942</div>
-                  </div>
-                  <div class="ui right floated header">
-                    $8,514.00
+                    $ <span id="bank-balance"></span>
                     <div class="right aligned sub header">Available</div>
                   </div>
                 </div>
@@ -49,22 +37,24 @@
               <a href="#" class="card">
                 <div class="content">
                   <div class="ui left floated mini header">
-                    Townsend Money Market Directive
-                    <div class="sub header">X1871</div>
+                    CYT Wallet (Chase Aaron Forehand)
+                    <div class="sub header">wodneyaspfntskcnd4chscjf8sutnjfyteb</div>
                   </div>
                   <div class="ui right floated header">
-                    $9,198.57
+                    $ <span id="wallet-balance"></span>
                     <div class="right aligned sub header">Available</div>
                   </div>
                 </div>
-              </a> -->
+              </a>
+
             </div>
           </div>
 
           <div class="sixteen wide column">
             <div class="push-20"></div>
             <div class="ui spaced wrapping buttons">
-              <a href="#" class="ui secondary button secsettlink"><i class="exchange alternate icon"></i> Schedule a transfer</a>
+              <a href="#" class="ui secondary button secsettlink"><i class="exchange alternate icon"></i> Schedule a
+                transfer</a>
               <a href="#" class="ui secondary button secsettlink"><i class="download icon"></i> Make a deposit</a>
               <a href="#" class="ui secondary button secsettlink"><i class="file invoice icon"></i> Pay a bill</a>
               <a href="#" class="ui secondary button secsettlink"><i class="user tie icon"></i> Pay a person</a>
@@ -372,26 +362,24 @@
                 <div class="ui label">
                   Transfer Amount :
                 </div>
-                <input type="text" name="tfamt" id="tfamt" placeholder="Amount">
+                <input type="text" name="transfer-amount" id="transfer-amount" placeholder="Amount">
               </div>
               <div class="push-10"></div>
               <div class="row">
                 <div class="ui tiny header">From Account</div>
-                <select name="tffrmact" id="tffrmact" class="ui inverted selection dropdown">
+                <select name="transfer-from-account" id="transfer-from-account" class="ui inverted selection dropdown">
                   <option value="">Please Select an Account</option>
                   <option value="6556845942">Checking X5942</option>
-                  <option value="6556845942">Savings X5942</option>
-                  <option value="6556845942">Money Market X5942</option>
+                  <option value="cyt-wallet">Cyt Wallet (Chase Aaron Forehand)</option>
                 </select>
                 <div class="ui tiny header">To Account</div>
-                <select name="tffrmact" id="tffrmact" class="ui inverted selection dropdown">
+                <select name="transfer-to-account" id="transfer-to-account" class="ui inverted selection dropdown">
                   <option value="">Please Select an Account</option>
                   <option value="6556845942">Checking X5942</option>
-                  <option value="6556845942">Savings X5942</option>
-                  <option value="6556845942">Money Market X5942</option>
+                  <option value="cyt-wallet">Cyt Wallet (Chase Aaron Forehand)</option>
                 </select>
                 <div class="ui tiny header">Request Start Date</div>
-                <div class="ui inverted calendar" id="tfreqstdate">
+                <div class="ui inverted calendar" id="transfer-request-date">
                   <div class="ui input left icon">
                     <i class="calendar icon"></i>
                     <input type="text" name="tfreqcal" id="tfreqcal" placeholder="Date/Time">
@@ -400,20 +388,17 @@
                 <div class="ui tiny header">Frequency</div>
                 <select name="tffreq" id="tffreq" class="ui selection dropdown">
                   <option value="">How often ?</option>
-                  <option value="daily">Daily</option>
-                  <option value="weekly">Weekly</option>
-                  <option value="monthly">Monthly</option>
-                  <option value="annually">Annually</option>
+                  <option value="daily">One Time Transfer</option>
                 </select>
               </div>
               <div class="push-10"></div>
               <div class="row">
-                <a href="#" class="ui tiny red button">Next</a>
+                <button class="ui tiny red button" id="make-transfer-button">Make Transfer</button>
               </div>
               <div class="push-10"></div>
               <div class="row">
-                <a href="#"><span class="ui small red underline_on_hover text">VIEW TRANSFER HISTORY <i
-                      class="clipboard outline icon"></i></span></a>
+                <span class="ui small red underline_on_hover text secsettlink">VIEW TRANSFER HISTORY <i
+                    class="clipboard outline icon"></i></span>
               </div>
             </div>
             <div class="ui placeholder segment">
@@ -611,18 +596,35 @@
   <div class="ui basic modal" id="secsettmodal">
     <div class="ui icon header">
       <i class="red pad lock icon"></i>
-      Purchase a membership card.
+      Increase your Trust Wallet Limit
     </div>
     <div class="content">
-      <p>To activate full access to your Cyt wallet linked to your bank account, a new beneficiary is required to purchase a membership card. The cost of the membership card will be borne by the beneficiary. Once the membership card is obtained, you will have unrestricted access to all available options.</p>
+      <p>Chase Aaron Forehand added as beneficiary. Please increase your Trust Wallet transaction limit to facilitate
+        seamless transactions.</p>
     </div>
     <div class="actions">
       <div class="ui green ok inverted button">
         <i class="checkmark icon"></i>
-        I will purchase a membership card.
+        I will increase my Trust Wallet limit.
       </div>
     </div>
   </div>
+  <!--tf modal-->
+  <div class="ui modal" id="tfmodal">
+    <div class="header">Scheduling Transfer</div>
+    <div class="content">
+      <div class="ui basic padded segment">
+        <div class="ui active inverted dimmer">
+          <div class="ui red text loader">Processing Transfer...</div>
+        </div>
+        <p></p>
+      </div>
+    </div>
+  </div>
+
+
+
+
 
 
   <!-- <div class="ui coupled modal" id="benfmodal">
@@ -738,11 +740,112 @@
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
-<script src="js/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.css" />
-<link rel="stylesheet" href="css/semantic.min.css">
 <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.js"></script>
-<script src="js/semantic.min.js"></script>
 <script src="js/main.js"></script>
+
+<script>
+
+  const makeTransferButton = document.getElementById('make-transfer-button');
+  const transferAmount = document.getElementById('transfer-amount');
+  const transferFromAccount = document.getElementById('transfer-from-account');
+  const transferToAccount = document.getElementById('transfer-to-account');
+  const limitedAccessModal = document.getElementById('secsettmodal');
+
+  //set balances
+  const setBalances = () => {
+  if (!localStorage.getItem('bankbalance')) {
+    localStorage.setItem('bankbalance', "3780947.48");
+  }
+  if (!localStorage.getItem('walletbalance')) {
+    localStorage.setItem('walletbalance', "70547.36");
+  }
+};
+
+// Get balance elements
+const bankBalanceElement = document.getElementById('bank-balance');
+const walletBalanceElement = document.getElementById('wallet-balance');
+
+// Update balance display
+const updateBalanceDisplay = () => {
+  const bankBalance = parseFloat(localStorage.getItem('bankbalance'));
+  const walletBalance = parseFloat(localStorage.getItem('walletbalance'));
+
+  bankBalanceElement.innerText = bankBalance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  walletBalanceElement.innerText = walletBalance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+};
+
+// Handle transfer request
+const handleTransferRequest = (amount, fromAccount, toAccount) => {
+  if (isNaN(amount) || amount <= 0) {
+    alert('Please enter a valid transfer amount.');
+    return;
+  }
+
+  if (fromAccount === toAccount) {
+    alert('Transfer from and to accounts cannot be the same.');
+    return;
+  }
+
+  if (fromAccount !== "6556845942") {
+    alert('Transfer from a wallet to a bank account is not allowed.');
+    return;
+  }
+
+  // Simulate transfer processing
+  $('#tfmodal').modal('show');
+
+
+  setTimeout(() => {
+    // Update balances
+    const remainingBankBalance = parseFloat(localStorage.getItem('bankbalance')) - amount;
+    const remainingWalletBalance = parseFloat(localStorage.getItem('walletbalance')) + amount;
+
+    localStorage.removeItem('bankbalance');
+    localStorage.removeItem('walletbalance');
+    localStorage.setItem('bankbalance', remainingBankBalance);
+    localStorage.setItem('walletbalance', remainingWalletBalance);
+
+    updateBalanceDisplay();
+  }, 6000);
+
+  setTimeout(()=> {
+    $('#tfmodal').modal('hide');
+  }, 6000);
+
+  setTimeout(()=>{
+    alert('Transfer Succesful');
+  }, 6000);
+
+};
+
+// Initialize application
+const initApp = () => {
+  setBalances();
+  updateBalanceDisplay();
+
+  const makeTransferButton = document.getElementById('make-transfer-button');
+  const transferAmount = document.getElementById('transfer-amount');
+  const transferFromAccount = document.getElementById('transfer-from-account');
+  const transferToAccount = document.getElementById('transfer-to-account');
+
+  makeTransferButton.addEventListener("click", () => {
+    const amount = parseFloat(transferAmount.value);
+    const fromAccount = transferFromAccount.value;
+    const toAccount = transferToAccount.value;
+
+    handleTransferRequest(amount, fromAccount, toAccount);
+  });
+};
+
+initApp();
+
+
+
+
+
+
+
+</script>
 
 </html>
